@@ -29,7 +29,16 @@ define(['N/record'],
          * @since 2015.2
          */
         const beforeSubmit = (scriptContext) => {
-
+            
+            if (context.type !== context.UserEventType.CREATE)
+            return;
+            var form = context.form;
+            var notesField = form.getField({
+                    id: 'comments'
+            });
+            notesField.updateDisplayType({
+                displayType: serverWidget.FieldDisplayType.DISABLED
+            });
         }
 
         /**
